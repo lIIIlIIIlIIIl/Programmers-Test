@@ -20,6 +20,13 @@ class App {
           this.loading.hide();
         });
       },
+      onClickRnadomButton: () => {
+        this.loading.show();
+        api.fetchRandomCats().then(({ data }) => {
+          this.setState(data);
+          this.loading.hide();
+        });
+      },
     });
 
     this.searchResult = new SearchResult({

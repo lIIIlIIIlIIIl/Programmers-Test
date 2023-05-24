@@ -60,12 +60,6 @@ ul{
   width: 100%;
 }
 
-.Wrapper{
-  width: 100%;
-  padding: 10px 15px;
-}
-
-
 .Loading{
   position:fixed;
   top: 0;
@@ -82,12 +76,21 @@ ul{
   transform: translate(-50%, -50%);
   font-size: 40px;
 }
-
+.SearchWrapper{
+  width: 100%;
+}
 
 .SearchInput {
-  width: 100%;
-  font-size: 40px;
+  width: 80%;
+  font-size: 30px;
   padding: 10px 15px;
+}
+
+.RandomButton{
+  width: 20%;
+  font-size: 30px;
+  padding: 10px;
+  cursor: pointer;
 }
 
 .ImageInfo {
