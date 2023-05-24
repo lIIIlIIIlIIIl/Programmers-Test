@@ -23,6 +23,11 @@ body * {
   font-family: Goyang;
 }
 
+ul{
+  padding: 0;
+  margin: 0;
+}
+
 *,
 *:before,
 *:after {
@@ -53,6 +58,11 @@ body * {
   display: inline-block;
   margin: 0 0 1em;
   width: 100%;
+}
+
+.Wrapper{
+  width: 100%;
+  padding: 10px 15px;
 }
 
 .SearchInput {

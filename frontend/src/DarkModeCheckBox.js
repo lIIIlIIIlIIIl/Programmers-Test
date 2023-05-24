@@ -2,12 +2,14 @@ class DarkModeCheckBox {
   isDarckMode = null;
 
   constructor({ $target }) {
+    const $wrapper = document.createElement("section");
     const $DarkModeCheckBox = document.createElement("input");
     this.$DarkModeCheckBox = $DarkModeCheckBox;
     this.$DarkModeCheckBox.type = "checkbox";
 
-    $DarkModeCheckBox.className = "DarkModeCheckBox";
-    $target.appendChild($DarkModeCheckBox);
+    $wrapper.className = "Wrapper";
+    $wrapper.appendChild($DarkModeCheckBox);
+    $target.appendChild($wrapper);
 
     $DarkModeCheckBox.addEventListener("change", (e) => {
       this.setColorMode(e.target.checked);
