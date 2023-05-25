@@ -32,10 +32,9 @@ class App {
     this.searchResult = new SearchResult({
       $target,
       initialData: this.data,
-      onClick: (image) => {
-        this.imageInfo.setState({
-          visible: true,
-          image,
+      onClick: (catData) => {
+        this.imageInfo.getCateDeatil({
+          cat: catData,
         });
       },
     });
@@ -50,7 +49,6 @@ class App {
   }
 
   setState(nextData) {
-    console.log(this);
     this.data = nextData;
     this.searchResult.setState(nextData);
   }

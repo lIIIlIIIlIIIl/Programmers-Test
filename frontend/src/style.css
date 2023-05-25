@@ -117,13 +117,22 @@ ul{
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
+  background-color: var(--background);
+  /* background-color: #fff; */
   border: 1px solid #eee;
   border-radius: 5px;
 }
 
 .ImageInfo .content-wrapper img {
   width: 100%;
+}
+
+.ImageInfo .content-wrapper .title{
+  padding: 0 15px;
+}
+
+.close{
+  cursor: pointer;
 }
 
 

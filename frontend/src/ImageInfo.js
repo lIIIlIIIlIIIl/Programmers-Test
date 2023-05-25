@@ -18,9 +18,25 @@ class ImageInfo {
     this.render();
   }
 
+  getCateDeatil(catData) {
+    api.fetchCatDtail(catData.cat.id).then(({ data }) => {
+      this.setState({
+        visible: true,
+        cat: data,
+      });
+    });
+  }
+
+  closeModal() {
+    this.setState({
+      visible: false,
+      cat: null,
+    });
+  }
+
   render() {
     if (this.data.visible) {
-      const { name, url, temperament, origin } = this.data.image;
+      const { name, url, temperament, origin } = this.data.cat;
 
       this.$imageInfo.innerHTML = `
         <div class="content-wrapper">
@@ -35,6 +51,19 @@ class ImageInfo {
           </div>
         </div>`;
       this.$imageInfo.style.display = "block";
+
+      document.addEventListener("keydown", (ev) => {
+        if (ev.key === "Escape") this.closeModal();
+      });
+
+      this.$imageInfo.addEventListener("click", (ev) => {
+        if (
+          ev.target.className === "ImageInfo" ||
+          ev.target.className === "close"
+        ) {
+          this.closeModal();
+        }
+      });
     } else {
       this.$imageInfo.style.display = "none";
     }
