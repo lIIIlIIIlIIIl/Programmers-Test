@@ -18,6 +18,9 @@ class App {
         api.fetchCats(keyword).then(({ data }) => {
           this.setState(data);
           this.loading.hide();
+
+          // 검색결과를 로컬스토리지에 저장
+          this.saveResult(data);
         });
       },
       onClickRnadomButton: () => {
@@ -46,10 +49,24 @@ class App {
         image: null,
       },
     });
+
+    this.init();
   }
 
   setState(nextData) {
     this.data = nextData;
     this.searchResult.setState(nextData);
+  }
+
+  saveResult(result) {
+    localStorage.setItem("lastResult", JSON.stringify(result));
+  }
+
+  init() {
+    const lastResult =
+      localStorage.getItem("lastResult") === null
+        ? []
+        : JSON.parse(localStorage.getItem("lastResult"));
+    this.setState(lastResult);
   }
 }
