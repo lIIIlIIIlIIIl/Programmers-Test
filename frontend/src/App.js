@@ -3,6 +3,7 @@ console.log("app is running!");
 class App {
   $target = null;
   data = [];
+  page = 1;
 
   constructor($target) {
     this.$target = $target;
@@ -38,6 +39,24 @@ class App {
       onClick: (catData) => {
         this.imageInfo.getCateDeatil({
           cat: catData,
+        });
+      },
+      onNextPage: () => {
+        this.loading.show();
+
+        const keywordHistroy =
+          localStorage.getItem("keywordHistroy") === null
+            ? []
+            : localStorage.getItem("keywordHistroy").split(",");
+        const lastKeyword = keywordHistroy[0];
+        const page = this.page + 1;
+
+        api.fetchCatsPage(lastKeyword, page).then(({ data }) => {
+          let newData = this.data.concat(data);
+          this.setState(newData);
+          this.page = page;
+
+          this.loading.hide();
         });
       },
     });
